@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slideshow.css') }}">
+</head>
+<body>
+    <header>
+        <div id="title">Art Gallery Slideshow</div>
+        <div id="time">{{time}}</div>
+    </header>
+    <div class="card">
+        <div>
+            <img id="image" src="https://media.collections.yale.edu/thumbnail/yuag/obj/{{ object_id }}" alt="{{ label }}, {{ date }}" onerror="this.onerror=null; this.src='/static/image_not_available.png'">
+            <input type="hidden" id="object-id" value="{{ object_id }}">
+        </div>
+        <div>
+            <h2 id="label">{{label}}</h2>
+        </div>
+        <div>
+            <h3 id="date">{{date}}</h3>
+        </div>
+        <ul id="agents">
+            {% for item in agents %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="btns">
+        <button id="prev-btn">Previous</button>
+        <button id="pause-btn">Pause</button>
+        <button id="next-btn">Next</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/next_prev.js') }}"></script>
+</body>
+</html>
